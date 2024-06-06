@@ -62,7 +62,7 @@ const PokemonFetch = () => {
               {pokemon.name}
             </h2>
             <img
-              src={pokemon.sprites.front_default}
+              src={pokemon.sprites.front_shiny}
               alt={pokemon.name}
               className="w-32 h-32 mx-auto mb-2"
             />
