@@ -29,13 +29,27 @@ const PokemonFetch = () => {
     const fetchAllPokemon = async () => {
       try {
         // Fetch initial list of Pokémon
+        const response = await fetch(
+          "https://pokeapi.co/api/v2/pokemon?limit=100"
+        );
+
+        const data = await response.json();
+
         // Sequentially fetch details for each Pokémon
+        const pokemonData = [];
+        for (const pokemon of data.results) {
+          const res = await fetch(pokemon.url);
+          const pokemonDetails = await res.json();
+          pokemonData.push(pokemonDetails);
+        }
+
         // Update the state with the detailed Pokémon data
+        setPokemonList(pokemonData);
       } catch (error) {
         console.error("Failed to fetch Pokémon:", error);
       }
     };
-    // invoke function
+    fetchAllPokemon(); // invoke function
   }, []);
 
   return (
