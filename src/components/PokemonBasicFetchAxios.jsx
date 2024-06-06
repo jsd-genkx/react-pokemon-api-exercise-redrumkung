@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 
 const PokemonBasicFetchAxios = () => {
   const [pokemonData, setPokemonData] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -23,20 +23,21 @@ const PokemonBasicFetchAxios = () => {
         // console.log(data.results);
       } catch (error) {
         setError(error.message);
-      } finally {
-        setLoading(false);
-      }
+      } 
+      // finally {
+      //   setLoading(false);
+      // }
     };
     fetchPokemon()// invoke function
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  // if (error) {
+  //   return <div>Error: {error}</div>;
+  // }
 
   return (
     <div>
